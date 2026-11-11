@@ -53,6 +53,9 @@ app.get('/jobs', async (req, res) => {
         if (req.query.isRemote) {
             query.isRemote = req.query.isRemote === 'true'
         }
+        if (req.query.category) {
+            query.category = req.query.category
+        }
         if (req.query.search) {
             query.$or = [
                 { responsibilities: { $regex: req.query.search, $options: 'i' } },
