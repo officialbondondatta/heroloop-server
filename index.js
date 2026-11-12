@@ -29,7 +29,7 @@ const heroloopdb = connection.db('heroloop')
 //collections
 const users = heroloopdb.collection('user')
 const jobs = heroloopdb.collection('jobs')
-
+const applications = heroloopdb.collection('applications')
 
 //user
 app.get('/users', async (req, res) => {
@@ -83,6 +83,13 @@ app.delete('/jobs/:id', async (req, res) => {
     res.send(result)
 })
 
+//applications
+
+app.post('/applications', async (req, res) => {
+    const data = req.body
+    const result = await applications.insertOne(data)
+    res.send(result)
+})
 
 
 app.get("/", (req, res) => {
