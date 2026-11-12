@@ -91,6 +91,14 @@ app.post('/applications', async (req, res) => {
     res.send(result)
 })
 
+app.get('/applications', async (req, res) => {
+    const query = {}
+    if (req.query.userId) {
+        query.userId = req.query.userId
+    }
+    const result = await applications.find(query).toArray()
+    res.send(result)
+})
 
 app.get("/", (req, res) => {
     res.send(`Heroloop Server HomePage`)
